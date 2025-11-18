@@ -1,13 +1,11 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# Remova as duas linhas abaixo:
+# . "$(dirname -- "$0")/_/husky.sh"
 
 echo '👷 Running pre-commit checks...'
 
-# Executa lint-staged para formatar e lintar apenas os arquivos staged
-# Se lint-staged falhar (erros de lint não corrigíveis), o commit será abortado.
 npx lint-staged
 
-# Verifica o status de saída do lint-staged
 if [ $? -ne 0 ]; then
   echo '❌ Pre-commit checks failed. Please fix the issues before committing.'
   exit 1

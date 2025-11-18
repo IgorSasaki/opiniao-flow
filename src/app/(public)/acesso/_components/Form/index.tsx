@@ -1,24 +1,46 @@
 'use client'
+
 import { useRouter } from 'next/navigation'
-import { FC, FormEvent, useState } from 'react'
+import type { FC, FormEvent } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useAuth } from '@/contexts/Auth'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 export const Form: FC = () => {
   const router = useRouter()
-
   const { login } = useAuth()
 
-  const [email, setEmail] = useState('researcher@opinionstudio.com')
-  const [password, setPassword] = useState('demo-password')
-  const [rememberMe, setRememberMe] = useState(false)
+  const [rememberMe, setRememberMe] = useLocalStorage<boolean>(
+    'opiniao-flow:rememberMe',
+    false
+  )
 
-  const handleLogin = (e: FormEvent) => {
+  const [rememberedEmail, setRememberedEmail] = useLocalStorage<string>(
+    'opiniao-flow:rememberMeEmail',
+    ''
+  )
+
+  const [email, setEmail] = useState<string>(
+    rememberedEmail || 'researcher@opinionstudio.com'
+  )
+  const [password, setPassword] = useState<string>('demo-password')
+
+  useEffect(() => {
+    if (rememberMe) {
+      setRememberedEmail(email)
+    } else {
+      setRememberedEmail('')
+    }
+  }, [rememberMe, email, setRememberedEmail])
+
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     login(email, password)
     router.push('/')
   }
@@ -53,7 +75,7 @@ export const Form: FC = () => {
         <Checkbox
           checked={rememberMe}
           id="remember"
-          onCheckedChange={checked => setRememberMe(checked as boolean)}
+          onCheckedChange={checked => setRememberMe(Boolean(checked))}
         />
         <Label
           className="cursor-pointer text-sm font-normal"

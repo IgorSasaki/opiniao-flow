@@ -8,13 +8,13 @@ import { Header } from './_components/Header'
 const Page: NextPage = async () => {
   return (
     <div className="from-background to-muted flex min-h-screen items-center justify-center bg-linear-to-br p-4">
-      <div className="w-full max-w-md space-y-8">
+      <main className="w-full max-w-md space-y-8">
         <Header />
 
         <Card className="p-8">
           <Form />
         </Card>
-      </div>
+      </main>
     </div>
   )
 }

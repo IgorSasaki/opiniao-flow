@@ -42,7 +42,7 @@ export const Form: FC = () => {
     e.preventDefault()
 
     login(email, password)
-    router.push('/')
+    router.push('/dashboard')
   }
 
   return (

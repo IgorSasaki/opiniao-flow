@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 export const Header: FC = async () => {
   return (
-    <div className="w-full max-w-md space-y-8">
+    <header className="w-full max-w-md space-y-8">
       <div className="text-center">
         <div className="mb-4 flex justify-center">
           <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-lg">
@@ -17,6 +17,6 @@ export const Header: FC = async () => {
           Plataforma de Pesquisa de Opinião
         </p>
       </div>
-    </div>
+    </header>
   )
 }

@@ -1,6 +1,7 @@
 'use client'
 import { NextPage } from 'next'
 
+import { CreateSurveyModal } from '@/components/commons/structure/CreateSurveyModal'
 import { useSurveys } from '@/hooks/useSurveys'
 
 import { Details } from './_components/Details'
@@ -17,6 +18,8 @@ const Page: NextPage = () => {
       <Details activeSurveys={10} countSurveys={20} draftSurveys={10} />
 
       <SurveyList surveys={surveys} />
+
+      <CreateSurveyModal />
     </div>
   )
 }

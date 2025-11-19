@@ -1,14 +1,13 @@
 'use client'
 import { Plus } from 'lucide-react'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { triggerCustomEvent } from '@/utils/helpers/customEvents/triggerCustomEvent'
 
 import { HeaderProps } from './types'
 
 export const Header: FC<HeaderProps> = ({ countSurveys }) => {
-  const [_showCreateDialog, setShowCreateDialog] = useState(false)
-
   return (
     <div className="flex items-start justify-between">
       <div>
@@ -21,7 +20,15 @@ export const Header: FC<HeaderProps> = ({ countSurveys }) => {
         </p>
       </div>
 
-      <Button className="gap-2" onClick={() => setShowCreateDialog(true)}>
+      <Button
+        onClick={() => {
+          triggerCustomEvent({
+            eventName: 'create-survey-form',
+            data: { action: 'open' }
+          })
+        }}
+        className="gap-2"
+      >
         <Plus className="h-4 w-4" />
         Criar pesquisa
       </Button>

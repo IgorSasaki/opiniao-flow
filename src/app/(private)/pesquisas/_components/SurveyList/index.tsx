@@ -48,7 +48,7 @@ export const SurveyList: FC<SurveyListProps> = ({ surveys }) => {
             key={survey.id}
           >
             <div className="flex items-start justify-between gap-4">
-              <Link className="flex-1" href={`/surveys/${survey.id}`}>
+              <Link className="flex-1" href={`/pesquisas/${survey.id}`}>
                 <div className="space-y-2">
                   <h3 className="text-foreground hover:text-primary text-lg font-semibold transition-colors">
                     {survey.title}

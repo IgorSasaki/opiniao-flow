@@ -12,9 +12,9 @@ const KPI = [
     color: 'primary'
   },
   {
-    label: 'Coletores ativos',
+    label: 'Coletores ativas',
     value: '8',
-    change: '+2 new',
+    change: '+2 novos',
     icon: Zap,
     color: 'accent'
   },

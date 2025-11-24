@@ -11,5 +11,4 @@ export const createSurveySchema = z.object({
     .string()
     .max(500, 'Description must not exceed 500 characters')
     .trim()
-    .default('')
 })

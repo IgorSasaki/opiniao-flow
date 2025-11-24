@@ -9,8 +9,14 @@ export const Header: FC<HeaderProps> = ({
   router,
   showPreview,
   setShowPreview,
-  saveToSurvey
+  saveToSurvey,
+  addToast
 }) => {
+  const handleSave = () => {
+    saveToSurvey()
+    addToast('Alterações salvas com sucesso', 'success')
+  }
+
   return (
     <div className="flex items-center justify-between">
       <Button className="gap-2" onClick={() => router.back()} variant="ghost">
@@ -23,7 +29,7 @@ export const Header: FC<HeaderProps> = ({
           {showPreview ? 'Editar' : 'Visualizar'}
         </Button>
 
-        <Button className="gap-2" onClick={saveToSurvey}>
+        <Button className="gap-2" onClick={handleSave}>
           <Save className="h-4 w-4" />
           Salvar mudanças
         </Button>

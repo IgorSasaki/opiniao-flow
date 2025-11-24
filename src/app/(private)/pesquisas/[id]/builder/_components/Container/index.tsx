@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation'
 import { FC, useState } from 'react'
 
 import { Card } from '@/components/ui/card'
+import { useToast } from '@/contexts/Toast'
 import { useSurveyBuilder } from '@/hooks/useSurveyBuilder'
 import { useSurveys } from '@/hooks/useSurveys'
 
@@ -16,6 +17,7 @@ import { ContainerProps } from './types'
 
 export const Container: FC<ContainerProps> = ({ surveyId }) => {
   const router = useRouter()
+  const { addToast } = useToast()
   const { surveys } = useSurveys()
   const {
     questions,
@@ -43,6 +45,7 @@ export const Container: FC<ContainerProps> = ({ surveyId }) => {
   return (
     <>
       <Header
+        addToast={addToast}
         router={router}
         saveToSurvey={saveToSurvey}
         setShowPreview={setShowPreview}

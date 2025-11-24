@@ -9,7 +9,7 @@ import { Questions } from '../Questions'
 import { ContainerProps } from './types'
 
 export const Container: FC<ContainerProps> = ({ surveyId }) => {
-  const { surveys, updateSurvey } = useSurveys()
+  const { surveys, updateSurvey, deleteSurvey } = useSurveys()
   const survey = surveys.find(s => s.id === surveyId)
 
   if (!survey) {
@@ -22,7 +22,11 @@ export const Container: FC<ContainerProps> = ({ surveyId }) => {
 
   return (
     <>
-      <Header survey={survey} updateSurvey={updateSurvey} />
+      <Header
+        deleteSurvey={deleteSurvey}
+        survey={survey}
+        updateSurvey={updateSurvey}
+      />
 
       <Highlights survey={survey} />
 

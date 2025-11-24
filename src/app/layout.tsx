@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
 
 import { AuthProvider } from '@/contexts/Auth'
-
+import { ToastProvider } from '@/contexts/Toast'
 import '../styles/globals.css'
 
 export const metadata = {
@@ -36,7 +36,9 @@ const inter = Inter({
 const RootLayout = ({ children }: { children: ReactNode }) => (
   <html lang="pt-BR">
     <body className={inter.className}>
-      <AuthProvider>{children} </AuthProvider>
+      <ToastProvider>
+        <AuthProvider>{children} </AuthProvider>
+      </ToastProvider>
     </body>
   </html>
 )
